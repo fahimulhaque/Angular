@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Scope</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		var name = "myApp" , requires = [] , myApp = null;
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('AppCtrl',function($scope){
+			
+			$scope.employee = {
+
+				firstname : "Fahimul",
+				lastname : "Hauqe", 
+				company : "iNautix"
+			};
+
+			$scope.showMsg = function(){
+
+				console.log('Hey how are you');
+			}
+
+		})
+
+	</script>
+</head>
+<body ng-controller="AppCtrl">
+
+	<h1>{{employee.firstname + " " + employee.lastname + "  - " + employee.company}}</h1>
+	<button ng-click="showMsg()">click me</button>
+
+</body>
+</html>

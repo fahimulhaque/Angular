@@ -1,0 +1,22 @@
+<table>
+	<thead>
+		<tr>
+			<th>Sl no</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>First</th>
+			<th>Last</th>
+			<th>Middle</th>
+		</tr>
+	</thead>
+	<tbody ng-repeat="contact in contacts">
+		<tr>
+			<th>{{$index + 1}}</th>
+			<th>{{contact.name}}</th>
+			<th>{{contact.age}}</th>
+			<th>{{$first}}</th>
+			<th>{{$last}}</th>
+			<th>{{$middle}}</th>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Exammple of ng-repet example</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		(function()
+		{
+
+
+		var name = "myApp" , requires = [] , myApp = null;
+
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl', function($scope){
+			
+			$scope.contacts = [
+			{name : "jack" , age : 13},
+			{name : "john" , age : 15},
+			{name : "Fahimul" ,age : 54}
+			];
+
+
+
+			$scope.viewFile = function(){
+
+				if($scope.viewState){
+
+					return "table.html"
+
+				}
+				else {
+					return "list.html"
+				}
+
+					
+			}
+
+		});
+}());
+	</script>
+</head>
+<body ng-controller="appCtrl">
+<input type="checkbox" ng-model= "viewState">Toggle
+<ng-include src="viewFile()"></ng-include>
+
+</body>
+</html>

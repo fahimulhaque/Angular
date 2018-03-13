@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Example of ng-switch</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		(function(){
+
+		var name = "myApp" , requires = []  , myApp = null ;
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl',function($scope){
+
+			$scope.data = {};
+
+			
+		});
+	}());
+	</script>
+</head>
+<body ng-controller="appCtrl">
+
+<div ng-repeat="channel in ['none' , 'star world','star plus']">
+	<input type="radio" name="channel" ng-model= "data.whichChannel" value="{{channel}}" ng-checked="$first">{{channel}}
+</div>
+
+<div ng-switch on="data.whichChannel">
+	
+	<div ng-switch-when= "star world">
+	You are watching star world
+	</div>
+
+	<div ng-switch-when= "star plus">You are watching Star plus</div>
+
+	<div ng-switch-default>You are watching Nothing</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Exammple of ng-mode : two way binding</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		(function()
+		{
+
+
+		var name = "myApp" , requires = [] , myApp = null;
+
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl', function($scope){
+			
+			$scope.contacts = [
+			{name : "jack" , age : 13},
+			{name : "john" , age : 15}
+			];
+
+
+		});
+}());
+	</script>
+</head>
+<body ng-controller="appCtrl">
+<div>{{contacts.length}} with first name {{contacts[0].name}} and age is {{contacts[0].age}}</div>
+
+<div>
+	
+	<input type="text" name="firstname" ng-model="contacts[0].name" id="name">
+	<input type="text" name="age" ng-model= "contacts[0].age" id="age">
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!doctype html >
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>Angular Declarative Approach</title>
+  <script src="angular.js"></script>
+</head>
+<body >
+	<form name="declarative">
+		<label for="yourName">Your Name: </label>
+		<input type="text" name="yourName" 
+			id="yourName" ng-model="yourName">
+		<h1>{{yourName}}</h1>
+	</form>
+</body>
+</html>

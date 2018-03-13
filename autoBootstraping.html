@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Example for auto bootstraping</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		(function(){
+		var name = "myApp" , requires = [] , myApp = null ;
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl',function($scope){
+
+			$scope.employee = {
+				name : "Jack",
+				kaam : "devloper"
+			};
+			
+		});
+	}());
+	</script>
+</head>
+<body ng-init="Title='Welcome'"> <!-- This is coming from root scope and while inializing it is getting initialize in $rootscope which is parent of $scope--> 
+	<div ng-controller="appCtrl">
+		<h1 ng-cloak>{{Title}}</h1>
+		<p ng-cloak>{{employee.name}} - {{employee.kaam}}</p>
+	</div>
+</body>
+</html>

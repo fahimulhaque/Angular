@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Declerative</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		(function()
+		{
+
+		var name = "myApp" , requires = [] , myApp = null ;
+
+		myApp = angular.module(name , requires);
+		myApp.controller('appCtrl', function($scope){
+
+			$scope.element = [
+
+			{name : "jack" , age : 13},
+			{name : "jhon" , age : 14}
+			];
+
+
+
+			$scope.addElement = function(){
+
+			$scope.element.push({name : "fahim" , age : 12});
+		};
+			
+		});
+
+}());
+
+	</script>
+</head>
+<body ng-controller="appCtrl">
+	<div>TOTAL NO OF CONTACTS : {{element.length}}</div>
+	<div ng-bind="element.length"></div>
+	<div ng-bind-template="{{element.length}} and name of first element is {{element[0].name}}"></div>
+	<div ng-non-bindable>use of {{non-bindable directive}}</div>
+	<div> {{and}}</div>
+	<button ng-click="addElement()">Click me</button>
+
+</body>
+</html>

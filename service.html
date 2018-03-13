@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Service</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-controller="AppCtrl as app">
+	<h1>Matheatical Operations</h1>
+	<br>
+
+	<input type="text" name="firstNumber" ng-model="app.firstNumber">
+	<br>
+	<input type="text" name="secondNumber" ng-model="app.secondNumber">
+	<br>
+	Option: <button ng-click="app.setOperation('+')">Add (+)</button>
+			<button ng-click="app.setOperation('-')">Subtract (-)</button> </br>
+
+			<button id="calculateBtn" 
+		ng-click="app.calculate(app.firstNumber, app.secondNumber)">
+		Calculate!
+	</button> </br>
+
+	Result: <p id="result" ng-bind="app.result"></p>
+
+
+</body>
+</html>

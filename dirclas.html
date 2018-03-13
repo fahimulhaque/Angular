@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>directive in class style</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		
+		var name = "myApp" , requires= [] , myApp = null ;
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl', function($scope){
+		
+			$scope.contacts = [
+			{name : "jack" , age : 13},
+			{name : "john" , age : 15}];
+
+
+		});
+
+	</script>
+</head>
+<body ng-controller="appCtrl">
+	<div class="ng-bind: contacts.length"></div>
+</body>
+</html>

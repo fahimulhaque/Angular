@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Example of ng-switch</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		(function(){
+
+		var name = "myApp" , requires = []  , myApp = null ;
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl',function($scope){
+
+			$scope.goods = [
+			{name : "apple" , price : 45},
+			{name : "mango" , price : 55},
+			{name : "Jackfruits" , price : 46}];
+
+			
+		});
+	}());
+	</script>
+</head>
+<body ng-controller="appCtrl">
+
+	<table>
+		<thead>
+			<tr>
+				<td>Sl no</td>
+				<td>Name</td>
+				<td>Price</td>
+				<td>Json</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="good in goods">
+				<td>{{$index}}</td>
+				<td>{{good.name | uppercase}}</td>
+				<td> {{good.price | currency:"Rs " | lowercase }}</td>
+				<td>{{good | json}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

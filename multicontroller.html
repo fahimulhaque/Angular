@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Example for multicontroller</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var name = "myApp" , requires = [] , myApp = null ;
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl',function($scope){
+
+			$scope.$on("removeProduct" , function(evt,item){
+				console.log('remove item:' + item.name);
+
+			})
+			
+		});
+
+		myApp.controller('productCtrl',function($scope, $rootScope){
+			
+			$scope.products = [
+			{name : "apple" , price : 32},
+			{name : "banana" , price : 44},
+			{name : "gauva" , price : 34}
+			];
+
+			$scope.addtoCart = function(product){
+
+				$rootScope.$broadcast("addProduct" , product);
+			};
+		});
+
+		myApp.controller('cartCtrl',function($scope){
+
+			$scope.cart =[] ;
+
+			$scope.$on("addProduct" , add);
+
+			function add(evt, product){
+
+				$scope.cart.push(product);
+			};
+
+			$scope.removeFromCart = function(item){
+
+				$scope.$emit("removeProduct" , item);
+				$scope.cart.pop(item);
+
+			}
+			
+		});
+
+	</script>
+</head>
+<body ng-controller="appCtrl">
+	<div ng-controller="productCtrl">
+		<input type="text" name="search" ng-model="searchData" placeholder="Search by any thing">
+		<table>
+			<thead>
+				<tr>
+					<td>Sl no</td>
+					<td>Name</td>
+					<td>Price</td>
+				</tr>
+			</thead>
+			<tbody ng-repeat="product in products | filter:searchData | orderBy:name">
+				<tr>
+					<td ng-cloak>{{$index + 1}}</td>
+					<td ng-cloak>{{product.name}}</td>
+					<td ng-cloak>{{product.price | currency}}</td>
+					<td>
+						<button ng-click="addtoCart(product)">Add to cart</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div ng-controller="cartCtrl">
+		<table>
+			<thead>
+				<tr>
+					<td>Sl no</td>
+					<td>Name</td>
+					<td>Price</td>
+				</tr>
+			</thead>
+			<tbody ng-repeat="item in cart">
+				<tr>
+					<td>{{$index}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price}}</td>
+					<td><button ng-click="removeFromCart(item)">Remove from cart</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

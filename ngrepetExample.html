@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Exammple of ng-repet example</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		(function()
+		{
+
+
+		var name = "myApp" , requires = [] , myApp = null;
+
+
+		myApp = angular.module(name , requires);
+
+		myApp.controller('appCtrl', function($scope){
+			
+			$scope.contacts = [
+			{name : "jack" , age : 13},
+			{name : "john" , age : 15},
+			{name : "Fahimul" ,age : 54}
+			];
+
+
+		});
+}());
+	</script>
+</head>
+<body ng-controller="appCtrl">
+<ul>
+	<li ng-repeat="(key, value) in contacts[0]">{{key}} -  {{value}}</li>
+</ul>
+
+<ul>
+	<li ng-repeat="prop in contacts[0]">{{prop}}</li>
+</ul>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Sl no</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>First</th>
+			<th>Last</th>
+			<th>Middle</th>
+		</tr>
+	</thead>
+	<tbody ng-repeat="contact in contacts">
+		<tr>
+			<th>{{$index + 1}}</th>
+			<th>{{contact.name}}</th>
+			<th>{{contact.age}}</th>
+			<th>{{$first}}</th>
+			<th>{{$last}}</th>
+			<th>{{$middle}}</th>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>
